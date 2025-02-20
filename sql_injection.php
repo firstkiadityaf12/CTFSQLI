@@ -15,6 +15,15 @@ if ($conn->connect_error) {
     echo "Koneksi Berhasil!";
 }
 
+$ip = $_SERVER['REMOTE_ADDR'];
+if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+    $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+}
+
+if ($ip === "1337.1337.1337.1337") { 
+    echo "Congrats! Your flag is: CTFPRACTICLASS{headers_poisoning_basic} <br>";
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
